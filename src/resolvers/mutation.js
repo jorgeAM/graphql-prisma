@@ -2,10 +2,14 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { APP_SECRET, getUserId } = require('../utils')
 
-const post = (_, args, context) => context.prisma.createLink({
-     url: args.url,
-    description: args.description,
-})
+const post = (_, args, context) => {
+    const userId = getUserId(context)
+    return context.prisma.createLink({
+        url: args.url,
+        description: args.description,
+        postedBy: { connect: { id: userId } },
+    })
+}
 
 const signup = async (_, args, context) => {
     const password = await bcrypt.hash(args.password, 10)
