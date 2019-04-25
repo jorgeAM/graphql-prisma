@@ -4,9 +4,7 @@ const { prisma } = require('./generated/prisma-client')
 const resolvers = {
     Query: {
       info: () => `This is the API of a Hackernews Clone`,
-      feed: (_, args, context, info) => {
-        return context.prisma.links()
-      },
+      feed: (_, args, context, info) => context.prisma.links(),
       link: (_, args, context) => context.prisma.link({ id: args.id })
     },
     Link: {
