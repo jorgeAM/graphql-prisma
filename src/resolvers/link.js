@@ -4,7 +4,7 @@ const postedBy = (parent, args, context) => {
 
 const votes = (parent, args, context) => context.prisma.link({ id: parent.id }).votes()
   
-  module.exports = {
-    postedBy,
-    votes,
-  }
+module.exports = {
+  postedBy,
+  votes,
+}
