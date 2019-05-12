@@ -10,11 +10,14 @@ type Mutation {
   vote(linkId: ID!): Vote
 }
 
+scalar DateTime
+
 type Link {
   id: ID!
   description: String!
   url: String!
   postedBy: User
+  createdAt: String
   votes: [Vote!]!
 }
 
